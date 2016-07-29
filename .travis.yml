@@ -1,9 +1,13 @@
+sudo: false
 language: csharp
 solution: Metrics.NET.Prometheus.sln
+
 mono:
-  - latest
+ - latest
+
 install:
-  - nuget restore Metrics.NET.Prometheus.sln
+ - nuget restore Metrics.NET.Prometheus.sln
+
 script:
- - xbuild Metrics.NET.Prometheus.sln /p:Configuration="Debug"
- - xbuild Metrics.NET.Prometheus.sln /p:Configuration="Release"
+ - xbuild ./Metrics.NET.Prometheus.sln /p:Configuration="Debug" /nologo /verbosity:normal
+ - xbuild ./Metrics.NET.Prometheus.sln /p:Configuration="Release" /nologo /verbosity:normal

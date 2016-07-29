@@ -12,9 +12,3 @@ if %errorlevel% neq 0 exit /b %errorlevel%
 
 %MSBUILD% %SOLUTION_FILE% /p:Configuration="Release"
 if %errorlevel% neq 0 exit /b %errorlevel%
-
-@REM %XUNIT% .\bin\Debug\Tests\Metrics.Tests.dll -maxthreads 1
-@REM if %errorlevel% neq 0 exit /b %errorlevel%
-
-@REM %XUNIT% .\bin\Release\Tests\Metrics.Tests.dll -maxthreads 1
-@REM if %errorlevel% neq 0 exit /b %errorlevel%

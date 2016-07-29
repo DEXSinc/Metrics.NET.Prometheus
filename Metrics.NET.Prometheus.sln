@@ -15,7 +15,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{1FFB7E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E465898D-AE2E-4074-B6B3-5419F3162558}"
 	ProjectSection(SolutionItems) = preProject
+		.travis.yml = .travis.yml
 		build.bat = build.bat
+		build.sh = build.sh
 		create-nuget.bat = create-nuget.bat
 		Publishing\Metrics.NET.Prometheus.nuspec = Publishing\Metrics.NET.Prometheus.nuspec
 		README.md = README.md
