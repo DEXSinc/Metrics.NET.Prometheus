@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
+    <metadata>
+        <id>Metrics.NET.Prometheus</id>
+        <version>0.4.1-pre</version>
+        <title>Metrics.NET.Prometheus</title>
+        <authors>vic10us, DEXS Inc.</authors>
+        <owners>Keith A. Hill, DEXS Inc.</owners>
+        <licenseUrl>https://github.com/DEXSinc/Metrics.NET.Prometheus/blob/master/LICENSE</licenseUrl>
+        <projectUrl>https://github.com/DEXSinc/Metrics.NET.Prometheus</projectUrl>
+        <iconUrl>http://aa164a04d71748b69e19-156c2587edac284f25142c13aa308713.r11.cf1.rackcdn.com/metrics_prometheus_128.png</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>The library provides support for Prometheus Reporting in Metrics.NET</description>
+        <summary></summary>
+        <copyright>Keith Hill, DEXS Inc.</copyright>
+        <tags>metrics, measurements, charts, timer, histogram, duration, graphite, health checks, prometheus</tags>
+        <dependencies>
+            <dependency id="Metrics.NET" version="0.4.1-pre" />
+		</dependencies>
+    </metadata>
+    <files>
+      <file src="lib\net45\Metrics.NET.Prometheus.dll" target="lib\net45\Metrics.NET.Prometheus.dll" />
+      <file src="lib\net45\Metrics.NET.Prometheus.pdb" target="lib\net45\Metrics.NET.Prometheus.pdb" />
+      <file src="lib\net45\Metrics.NET.Prometheus.XML" target="lib\net45\Metrics.NET.Prometheus.XML" />      
+    </files>
+</package>

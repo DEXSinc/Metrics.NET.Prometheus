@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metrics.NET.Prometheus", "Src\Metrics.NET.Prometheus\Metrics.NET.Prometheus.csproj", "{85E6D63B-AFB3-445C-A073-3D7442E353EE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{1FFB7E16-1F04-442B-9AA8-EECF1EDFA670}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\Nuget.Config = .nuget\Nuget.Config
+		.nuget\nuget.exe = .nuget\nuget.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E465898D-AE2E-4074-B6B3-5419F3162558}"
+	ProjectSection(SolutionItems) = preProject
+		build.bat = build.bat
+		create-nuget.bat = create-nuget.bat
+		Publishing\Metrics.NET.Prometheus.nuspec = Publishing\Metrics.NET.Prometheus.nuspec
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{85E6D63B-AFB3-445C-A073-3D7442E353EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85E6D63B-AFB3-445C-A073-3D7442E353EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85E6D63B-AFB3-445C-A073-3D7442E353EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85E6D63B-AFB3-445C-A073-3D7442E353EE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
