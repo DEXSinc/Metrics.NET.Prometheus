@@ -23,4 +23,4 @@ Copyright (c) 2010-2013 Coda Hale, Yammer.com
 Published under Apache Software License 2.0, see LICENSE
 
 This library ( Metrics.NET.Prometheus ) is release under Apache 2.0 License ( see LICENSE ) 
-Copyright (c) 2016 DEXS Inc.
+Copyright (c) 2016 DEXS Inc. 
