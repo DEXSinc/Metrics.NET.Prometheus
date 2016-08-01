@@ -6,8 +6,8 @@
 |dev   |[![Dev Build status](https://ci.appveyor.com/api/projects/status/f25iphe76mva5sx8/branch/dev?svg=true)](https://ci.appveyor.com/project/vic10us/metrics-net-prometheus/branch/dev)|[![Mono Build Status](https://travis-ci.org/DEXSinc/Metrics.NET.Prometheus.svg?branch=dev)](https://travis-ci.org/DEXSinc/Metrics.NET.Prometheus)|
 
 [![NuGet Status](http://img.shields.io/nuget/v/Metrics.NET.Prometheus.svg)](https://www.nuget.org/packages/Metrics.NET.Prometheus/)
-[![Issue Stats](http://www.issuestats.com/github/DEXSinc/Metrics.NET.Prometheus/badge/pr)](http://www.issuestats.com/github/DEXSinc/Metrics.NET.Prometheus)
-[![Issue Stats](http://www.issuestats.com/github/DEXSinc/Metrics.NET.Prometheus/badge/issue)](http://www.issuestats.com/github/DEXSinc/Metrics.NET.Prometheus)
+[![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/DEXSinc/Metrics.NET.Prometheus.svg)](http://isitmaintained.com/project/DEXSinc/Metrics.NET.Prometheus "Average time to resolve an issue")
+[![Percentage of issues still open](http://isitmaintained.com/badge/open/DEXSinc/Metrics.NET.Prometheus.svg)](http://isitmaintained.com/project/DEXSinc/Metrics.NET.Prometheus "Percentage of issues still open")
 
 Metrics.NET.Prometheus - a Prometheus Report Endpoint extension for [Metrics.NET](https://github.com/Recognos/Metrics.NET)
 
