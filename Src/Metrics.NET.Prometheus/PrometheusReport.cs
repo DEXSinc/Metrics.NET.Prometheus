@@ -8,6 +8,9 @@ using Metrics.Reporters;
 
 namespace Metrics.NET.Prometheus
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public sealed class PrometheusReport : BaseReport
     {
         private readonly StringBuilder _reportText;
@@ -58,18 +61,12 @@ namespace Metrics.NET.Prometheus
             {
                 return "NaN";
             }
-            else if (double.IsPositiveInfinity(value))
+            if (double.IsPositiveInfinity(value))
             {
                 return "Inf";
             }
-            else if (double.IsNegativeInfinity(value))
-            {
-                return "-Inf";
-            }
-            else
-            {
-                return value.ToString(CultureInfo.InvariantCulture);
-            }
+            return double.IsNegativeInfinity(value) ? "-Inf" : 
+                   value.ToString(CultureInfo.InvariantCulture);
         }
 
         private static string SuffixFromUnit(Unit unit)
@@ -78,18 +75,15 @@ namespace Metrics.NET.Prometheus
             {
                 return "_in_kb";
             }
-            else if (unit.Name.Equals(Unit.MegaBytes.Name))
+            if (unit.Name.Equals(Unit.MegaBytes.Name))
             {
                 return "_in_mb";
             }
-            else if (unit.Name.Equals(Unit.Percent.Name))
+            if (unit.Name.Equals(Unit.Percent.Name))
             {
                 return "_pct";
             }
-            else
-            {
-                return "";
-            }
+            return "";
         }
 
         private void WriteStringMetric(string type, string name, string value, Unit unit, MetricTags tags)
@@ -233,6 +227,12 @@ namespace Metrics.NET.Prometheus
             WriteLongMetric("gauge", "healthz", status.IsHealthy ? 1 : 0, Unit.None, MetricTags.None);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="currentMetricsData"></param>
+        /// <param name="healthStatus"></param>
+        /// <returns></returns>
         public static string RenderMetrics(MetricsData currentMetricsData, Func<HealthStatus> healthStatus)
         {
             var report = new PrometheusReport();
