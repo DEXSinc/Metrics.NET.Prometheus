@@ -1,5 +1,7 @@
 #Metrics.NET.Prometheus
 
+[![Join the chat at https://gitter.im/Metrics-NET-Prometheus/Lobby](https://badges.gitter.im/Metrics-NET-Prometheus/Lobby.svg)](https://gitter.im/Metrics-NET-Prometheus/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 |Branch|Appveyor|Travis|
 |------|:--------:|:------:|
 |master|[![Master Build status](https://ci.appveyor.com/api/projects/status/f25iphe76mva5sx8/branch/master?svg=true)](https://ci.appveyor.com/project/vic10us/metrics-net-prometheus/branch/master)|[![Mono Build Status](https://travis-ci.org/DEXSinc/Metrics.NET.Prometheus.svg?branch=master)](https://travis-ci.org/DEXSinc/Metrics.NET.Prometheus)|
