@@ -1,7 +1,6 @@
-﻿using System.Runtime.CompilerServices;
-using System.Text;
+﻿using System.Text;
+using Metrics.Endpoints;
 using Metrics.Reports;
-using Metrics.Visualization;
 
 namespace Metrics.NET.Prometheus
 {
