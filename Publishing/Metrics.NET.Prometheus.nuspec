@@ -2,9 +2,9 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
     <metadata>
         <id>Metrics.NET.Prometheus</id>
-        <version>0.4.3-pre</version>
+        <version>0.5.1</version>
         <title>Metrics.NET.Prometheus</title>
-        <authors>vic10us, DEXS Inc.</authors>
+        <authors>Keith A. Hill, DEXS Inc.</authors>
         <owners>Keith A. Hill, DEXS Inc.</owners>
         <licenseUrl>https://github.com/DEXSinc/Metrics.NET.Prometheus/blob/master/LICENSE</licenseUrl>
         <projectUrl>https://github.com/DEXSinc/Metrics.NET.Prometheus</projectUrl>
@@ -15,7 +15,7 @@
         <copyright>Keith Hill, DEXS Inc.</copyright>
         <tags>metrics, measurements, charts, timer, histogram, duration, graphite, health checks, prometheus</tags>
         <dependencies>
-            <dependency id="Metrics.NET" version="0.4.1-pre" />
+            <dependency id="Metrics.NET" version="0.5.1" />
 		</dependencies>
     </metadata>
     <files>

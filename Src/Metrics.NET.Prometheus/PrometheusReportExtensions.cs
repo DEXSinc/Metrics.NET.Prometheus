@@ -15,7 +15,7 @@ namespace Metrics.NET.Prometheus
         /// <param name="config"></param>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static MetricsEndpointReports WithPrometheusEndpointReport(this MetricsEndpointReports config, string path = "/prometheus")
+        public static MetricsEndpointReports WithPrometheusEndpointReport(this MetricsEndpointReports config, string path = "prometheus")
         {
             return WithPrometheusEndpointReport(config, path, Encoding.ASCII);
         }
