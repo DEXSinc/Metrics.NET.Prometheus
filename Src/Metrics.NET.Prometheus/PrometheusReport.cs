@@ -65,7 +65,7 @@ namespace Metrics.NET.Prometheus
             {
                 return "Inf";
             }
-            return double.IsNegativeInfinity(value) ? "-Inf" : 
+            return double.IsNegativeInfinity(value) ? "-Inf" :
                    value.ToString(CultureInfo.InvariantCulture);
         }
 
@@ -96,7 +96,7 @@ namespace Metrics.NET.Prometheus
             _reportText.Append("\n");
 
             // Actual metric line
-            _reportText.Append(name.ToLower());
+            _reportText.Append(name.ToLower(CultureInfo.InvariantCulture));
             _reportText.Append(SuffixFromUnit(unit));
             if (tags.Tags.Length > 0)
             {
@@ -120,6 +120,68 @@ namespace Metrics.NET.Prometheus
             _reportText.Append("\n\n"); // Extra end-of-line
         }
 
+        private void WriteLongMetricSummary(string type, string name, TimerValue value, Unit unit, MetricTags tags)
+        {
+            var n = name.ToLower(CultureInfo.InvariantCulture);
+
+            // Help line
+            _reportText.Append("# HELP ");
+            _reportText.Append(n);
+            _reportText.Append(" A summary of the ");
+            _reportText.Append(n);
+            _reportText.Append(" duration in millisecond ");
+            _reportText.Append("\n");
+
+            // Type line
+            _reportText.Append("# TYPE ");
+            _reportText.Append(n);
+            _reportText.Append(" ");
+            _reportText.Append(type);
+            _reportText.Append("\n");
+
+            // Actual metric line
+
+            _reportText.Append(n + "{quantile=\"0.75\"," + AddTags(tags, false) + "} " + FormatDouble(value.Histogram.Percentile75));
+            _reportText.Append("\n");
+            _reportText.Append(n + "{quantile=\"0.95\"," + AddTags(tags, false) + "} " + FormatDouble(value.Histogram.Percentile95));
+            _reportText.Append("\n");
+            _reportText.Append(n + "{quantile=\"0.98\"," + AddTags(tags, false) + "} " + FormatDouble(value.Histogram.Percentile98));
+            _reportText.Append("\n");
+            _reportText.Append(n + "{quantile=\"0.99\"," + AddTags(tags, false) + "} " + FormatDouble(value.Histogram.Percentile99));
+            _reportText.Append("\n");
+            _reportText.Append(n + "{quantile=\"0.999\"," + AddTags(tags, false) + "} " + FormatDouble(value.Histogram.Percentile999));
+            _reportText.Append("\n");
+            _reportText.Append(n + "_median" + AddTags(tags) + " " + FormatDouble(value.Histogram.Median));
+            _reportText.Append("\n");
+            _reportText.Append(n + "_sum" + AddTags(tags) + " " + FormatLong(value.TotalTime));
+            _reportText.Append("\n");
+            _reportText.Append(n + "_count" + AddTags(tags) + " " + FormatLong(value.Histogram.Count));
+            _reportText.Append("\n\n"); // Extra end-of-line
+        }
+
+        private string AddTags(MetricTags tags, bool withStartTag = true)
+        {
+            var extraTags = new StringBuilder();
+            if (tags.Tags.Length > 0)
+            {
+                if (withStartTag)
+                    extraTags.Append("{");
+                for (int i = 0; i < tags.Tags.Length; i++)
+                {
+                    if (i != 0) extraTags.Append(",");
+                    extraTags.Append("tag");
+                    extraTags.Append(i);
+                    extraTags.Append('=');
+                    extraTags.Append('"');
+                    extraTags.Append(FormatName(tags.Tags[i]));
+                    extraTags.Append('"');
+                }
+                if (withStartTag)
+                    extraTags.Append("}");
+
+            }
+            return extraTags.ToString();
+        }
         private void WriteDoubleMetric(string type, string name, double value, Unit unit, MetricTags tags)
         {
             WriteStringMetric(type, name, FormatDouble(value), unit, tags);
@@ -215,7 +277,7 @@ namespace Metrics.NET.Prometheus
             TimeUnit durationUnit, MetricTags tags)
         {
             // The semantics between prometheus and Metrics.NET are different enough that we just want to pass a gauge
-            WriteLongMetric("gauge", name, value.Histogram.Count, unit, tags);
+            WriteLongMetricSummary("summary", name, value, unit, tags);
         }
 
         /// <summary>
