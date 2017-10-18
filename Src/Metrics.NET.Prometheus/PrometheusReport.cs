@@ -287,6 +287,11 @@ namespace Metrics.NET.Prometheus
         protected override void ReportHealth(HealthStatus status)
         {
             WriteLongMetric("gauge", "healthz", status.IsHealthy ? 1 : 0, Unit.None, MetricTags.None);
+            foreach (var stat in status.Results)
+            {
+                WriteLongMetric("gauge", stat.Name, stat.Check.IsHealthy ? 1 : 0, Unit.None, new MetricTags(stat.Check.Message));
+            }
+
         }
 
         /// <summary>
