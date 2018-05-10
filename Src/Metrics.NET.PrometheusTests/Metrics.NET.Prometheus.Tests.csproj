@@ -54,7 +54,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="RenderSubItemTests.cs" />
+    <Compile Include="RenderSetItemsTests.cs" />
     <Compile Include="PrometheusReportExtensionsTests.cs" />
     <Compile Include="PrometheusReportTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
