@@ -36,6 +36,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Metrics, Version=0.5.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Metrics.NET.0.5.5\lib\net45\Metrics.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -51,6 +54,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="RenderSubItemTests.cs" />
     <Compile Include="PrometheusReportExtensionsTests.cs" />
     <Compile Include="PrometheusReportTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -60,6 +64,9 @@
       <Project>{85E6D63B-AFB3-445C-A073-3D7442E353EE}</Project>
       <Name>Metrics.NET.Prometheus</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
