@@ -1,13 +1,12 @@
 ﻿using System;
 using Metrics.MetricData;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 namespace Metrics.NET.Prometheus.Tests
 {
     /// <summary>
     ///     Tests for the OutputSetItems option.
     /// </summary>
-    [TestClass]
     public class RenderSetItemsTests
     {
         private static readonly DateTime Epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
@@ -15,7 +14,7 @@ namespace Metrics.NET.Prometheus.Tests
         /// <summary>
         ///      Gauges don't support <c>OutputSetItems = true</c>.
         /// </summary>>
-        [TestMethod]
+        [Fact]
         public void GaugeTest()
         {
             var context = new DefaultMetricsContext();
@@ -31,13 +30,13 @@ namespace Metrics.NET.Prometheus.Tests
 gauge 1 0
 
 ");
-            Assert.AreEqual(expectedMetrics, renderedMetrics);
+            Assert.Equal(expectedMetrics, renderedMetrics);
         }
 
         /// <summary>
         ///     Counters support <c>OutputSetItems = true</c>.
         /// </summary>>
-        [TestMethod]
+        [Fact]
         public void CounterTest()
         {
             var context = new DefaultMetricsContext();
@@ -62,13 +61,13 @@ countersubitems{item=""Item1""} 2 0
 countersubitems{item=""Item2""} 3 0
 
 ");
-            Assert.AreEqual(expectedMetrics, renderedMetrics);
+            Assert.Equal(expectedMetrics, renderedMetrics);
         }
 
         /// <summary>
         ///     Counters support <c>OutputSetItems = false</c>.
         /// </summary>>
-        [TestMethod]
+        [Fact]
         public void CounterSetItemsDisabledTest()
         {
             var context = new DefaultMetricsContext();
@@ -92,13 +91,13 @@ counter 1 0
 countersubitems 5 0
 
 ");
-            Assert.AreEqual(expectedMetrics, renderedMetrics);
+            Assert.Equal(expectedMetrics, renderedMetrics);
         }
 
         /// <summary>
         ///     Meters support <c>OutputSetItems = true</c>.
         /// </summary>
-        [TestMethod]
+        [Fact]
         public void MeterTest()
         {
             var context = new DefaultMetricsContext();
@@ -123,13 +122,13 @@ metersubitems{item=""Item1""} 2 0
 metersubitems{item=""Item2""} 3 0
 
 ");
-            Assert.AreEqual(expectedMetrics, renderedMetrics);
+            Assert.Equal(expectedMetrics, renderedMetrics);
         }
 
         /// <summary>
         ///     Meters support <c>OutputSetItems = false</c>.
         /// </summary>
-        [TestMethod]
+        [Fact]
         public void MeterSetItemsDisabledTest()
         {
             var context = new DefaultMetricsContext();
@@ -153,13 +152,13 @@ meter 1 0
 metersubitems 5 0
 
 ");
-            Assert.AreEqual(expectedMetrics, renderedMetrics);
+            Assert.Equal(expectedMetrics, renderedMetrics);
         }
 
         /// <summary>
         ///     Meters support <c>OutputSetItems = true</c> with additional tags.
         /// </summary>
-        [TestMethod]
+        [Fact]
         public void MeterWithTagsTest()
         {
             var context = new DefaultMetricsContext();
@@ -184,13 +183,13 @@ metersubitems{item=""Item1"",tag0=""tag0"",tag1=""tag1""} 2 0
 metersubitems{item=""Item2"",tag0=""tag0"",tag1=""tag1""} 3 0
 
 ");
-            Assert.AreEqual(expectedMetrics, renderedMetrics);
+            Assert.Equal(expectedMetrics, renderedMetrics);
         }
 
         /// <summary>
         ///     Histograms don't support <c>OutputSetItems = true</c>.
         /// </summary>
-        [TestMethod]
+        [Fact]
         public void HistorgramTest()
         {
             var context = new DefaultMetricsContext();
@@ -214,13 +213,13 @@ historgram 1 0
 historgramsubitems 2 0
 
 ");
-            Assert.AreEqual(expectedMetrics, renderedMetrics);
+            Assert.Equal(expectedMetrics, renderedMetrics);
         }
 
         /// <summary>
         ///     Timers don't support <c>OutputSetItems = true</c>.
         /// </summary>
-        [TestMethod]
+        [Fact]
         public void TimerTest()
         {
             var context = new DefaultMetricsContext();
@@ -260,7 +259,7 @@ timersubitems_sum 5
 timersubitems_count 2
 
 ");
-            Assert.AreEqual(expectedMetrics, renderedMetrics);
+            Assert.Equal(expectedMetrics, renderedMetrics);
         }
 
         private static string RenderTestMetrics(DefaultMetricsContext ctx, PrometheusReportConfig config)

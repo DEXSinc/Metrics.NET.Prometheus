@@ -1,14 +1,13 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Xunit;
 
 namespace Metrics.NET.Prometheus.Tests
 {
-    [TestClass]
     public class PrometheusReportTests
     {
-        [TestMethod]
+        [Fact]
         public void RenderMetricsTest()
         {
-            Assert.IsTrue(true);
+            Assert.True(true);
         }
     }
 }

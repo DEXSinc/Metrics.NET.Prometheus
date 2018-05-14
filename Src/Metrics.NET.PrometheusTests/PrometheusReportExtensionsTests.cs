@@ -1,31 +1,30 @@
 ﻿using System.Text;
 using Metrics.Reports;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 namespace Metrics.NET.Prometheus.Tests
 {
-    [TestClass]
     public class PrometheusReportExtensionsTests
     {
-        [TestMethod]
+        [Fact]
         public void WithPrometheusEndpointReportTest()
         {
             var context = new DefaultMetricsContext();
             var endpointReports = new MetricsEndpointReports(context.DataProvider, () => new HealthStatus());
             var reports = endpointReports.WithPrometheusEndpointReport();
-            Assert.AreEqual(endpointReports, reports);
+            Assert.Equal(endpointReports, reports);
         }
 
-        [TestMethod]
+        [Fact]
         public void WithPrometheusEndpointReportPathTest()
         {
             var context = new DefaultMetricsContext();
             var endpointReports = new MetricsEndpointReports(context.DataProvider, () => new HealthStatus());
             var reports = endpointReports.WithPrometheusEndpointReport(path: "test/prometheus");
-            Assert.AreEqual(endpointReports, reports);
+            Assert.Equal(endpointReports, reports);
         }
 
-        [TestMethod]
+        [Fact]
         public void WithPrometheusEndpointReportPathConfigTest()
         {
             var context = new DefaultMetricsContext();
@@ -35,19 +34,19 @@ namespace Metrics.NET.Prometheus.Tests
                 OutputSetItems = true
             };
             var reports = endpointReports.WithPrometheusEndpointReport(path: "test/prometheus", reportConfig: config);
-            Assert.AreEqual(endpointReports, reports);
+            Assert.Equal(endpointReports, reports);
         }
 
-        [TestMethod]
+        [Fact]
         public void WithPrometheusEndpointReportPathEncodingTest()
         {
             var context = new DefaultMetricsContext();
             var endpointReports = new MetricsEndpointReports(context.DataProvider, () => new HealthStatus());
             var reports = endpointReports.WithPrometheusEndpointReport("test/prometheus", new UTF8Encoding(false));
-            Assert.AreEqual(endpointReports, reports);
+            Assert.Equal(endpointReports, reports);
         }
 
-        [TestMethod]
+        [Fact]
         public void WithPrometheusEndpointReportPathEncodingConfigTest()
         {
             var context = new DefaultMetricsContext();
@@ -57,7 +56,7 @@ namespace Metrics.NET.Prometheus.Tests
                 OutputSetItems = true
             };
             var reports = endpointReports.WithPrometheusEndpointReport("test/prometheus", new UTF8Encoding(false), config);
-            Assert.AreEqual(endpointReports, reports);
+            Assert.Equal(endpointReports, reports);
         }
     }
 }
