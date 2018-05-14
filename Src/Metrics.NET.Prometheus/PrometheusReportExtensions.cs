@@ -14,11 +14,12 @@ namespace Metrics.NET.Prometheus
         /// </summary>
         /// <param name="config"></param>
         /// <param name="path"></param>
+        /// <param name="reportConfig"></param>
         /// <returns></returns>
-        public static MetricsEndpointReports WithPrometheusEndpointReport(this MetricsEndpointReports config, string path = "prometheus")
+        public static MetricsEndpointReports WithPrometheusEndpointReport(this MetricsEndpointReports config, string path = "prometheus", PrometheusReportConfig reportConfig = null)
         {
             Encoding utf8WithoutBom = new UTF8Encoding(false);
-            return WithPrometheusEndpointReport(config, path, utf8WithoutBom);
+            return WithPrometheusEndpointReport(config, path, utf8WithoutBom, reportConfig);
         }
 
         /// <summary>
@@ -27,11 +28,16 @@ namespace Metrics.NET.Prometheus
         /// <param name="config"></param>
         /// <param name="path"></param>
         /// <param name="encoding"></param>
+        /// <param name="reportConfig"></param>
         /// <returns></returns>
-        public static MetricsEndpointReports WithPrometheusEndpointReport(this MetricsEndpointReports config,
-            string path, Encoding encoding)
+        public static MetricsEndpointReports WithPrometheusEndpointReport(
+            this MetricsEndpointReports config,
+            string path,
+            Encoding encoding,
+            PrometheusReportConfig reportConfig = null)
         {
-            return config.WithEndpointReport(path, (d, h, c) => new MetricsEndpointResponse(PrometheusReport.RenderMetrics(d, h), "text/plain", encoding));
+            reportConfig = reportConfig ?? new PrometheusReportConfig();
+            return config.WithEndpointReport(path, (d, h, c) => new MetricsEndpointResponse(PrometheusReport.RenderMetrics(d, h, reportConfig), "text/plain", encoding));
         }
     }
 }
